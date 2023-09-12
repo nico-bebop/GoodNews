@@ -31,7 +31,7 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/news': {
+            '^/api': {
                 target: 'https://localhost:7159/',
                 secure: false
             }

@@ -52,7 +52,7 @@ export default class App extends Component {
     }
 
     async populateWeatherData() {
-        const response = await fetch('news');
+        const response = await fetch('api/news/top-headlines?' + new URLSearchParams({ country: 'ar' }));
         const data = await response.json();
         this.setState({ forecasts: data, loading: false });
     }

@@ -18,7 +18,7 @@ public class NewsController : ControllerBase
     }
 
     [HttpGet("top-headlines")]
-    public NewsResult Get(string country, int page = 1, int pageSize = 10)
+    public NewsResult GetLatest(string country, int page = 1, int pageSize = 10)
     {
         return _newsService.GetLatestNews(country, page, pageSize);
     }
