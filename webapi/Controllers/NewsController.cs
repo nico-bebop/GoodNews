@@ -24,8 +24,8 @@ public class NewsController : ControllerBase
     }
 
     [HttpGet("search")]
-    public NewsResult Search(string keywords, DateOnly dateFrom, DateOnly dateTo, int page = 1, int pageSize = 10)
+    public NewsResult Search(string language, string keywords, DateOnly dateFrom, DateOnly dateTo, int page = 1, int pageSize = 10)
     {
-        return _newsService.SearchNews(keywords, dateFrom, dateTo, page, pageSize);
+        return _newsService.SearchNews(language, keywords, dateFrom, dateTo, page, pageSize);
     }
 }

@@ -37,7 +37,7 @@ namespace webapi.Services
             return new NewsResult();
         }
 
-        public NewsResult SearchNews(string keywords, DateOnly dateFrom, DateOnly dateTo, int page, int pageSize)
+        public NewsResult SearchNews(string language, string keywords, DateOnly dateFrom, DateOnly dateTo, int page, int pageSize)
         {
             using var client = new HttpClient();
 
@@ -45,7 +45,7 @@ namespace webapi.Services
             client.DefaultRequestHeaders.Add("x-api-key", apiKey);
             client.DefaultRequestHeaders.Add("user-agent", "good-news");
 
-            string parameters = string.Format("?q={0}&from={1}&to={2}&page={3}&pageSize={4}", keywords, dateFrom, dateTo, page, pageSize);
+            string parameters = string.Format("?language={0}&q={1}&from={2}&to={3}&page={4}&pageSize={5}", language, keywords, dateFrom, dateTo, page, pageSize);
             HttpResponseMessage response = client.GetAsync(parameters).Result;
 
             if (response.IsSuccessStatusCode)
