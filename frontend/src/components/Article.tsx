@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const Article = ({ data, index }: any & IArticle) => {
+export const Article = ({ data }: any & IArticle) => {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ maxWidth: 500, height: 365, m: "0 auto" }}>
@@ -18,6 +18,7 @@ export const Article = ({ data, index }: any & IArticle) => {
           sx={{ height: 140 }}
           image={data.urlToImage}
           title={data.title}
+          component='img'
         />
         <CardContent sx={{ paddingTop: "0.5rem" }}>
           <Typography
@@ -48,7 +49,7 @@ export const Article = ({ data, index }: any & IArticle) => {
         </CardContent>
 
         <CardActions>
-            <Link to={data.url} target="_blank" rel="noopener noreferrer">
+          <Link to={data.url} target="_blank" rel="noopener noreferrer">
             <Button
               variant="text"
               size="small"

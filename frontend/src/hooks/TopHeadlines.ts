@@ -10,11 +10,18 @@ const useNews = () => {
     fetchNews();
   }, []);
 
-  async function fetchNews() {
+  async function fetchNews(/*country : string*/) {
     try {
       setError("");
       setLoading(true);
-      const response = await fetch('api/news/top-headlines?country=us&page=1&pageSize=10');
+
+      const url = ('api/news/top-headlines?' + new URLSearchParams({
+        country: 'us'/*country*/,
+        page: '1',
+        pageSize: '10'
+      }).toString());
+
+      const response = await fetch(url);
       const data = await response.json();
 
       setNews(data.articles);

@@ -1,44 +1,32 @@
-import useNews from "../hooks/news";
+import useNews from "../hooks/TopHeadlines";
 import Loading from "./Loading";
 import Error from "./Error";
 import { Article } from "./Article";
 import {
-  TextField,
   Container,
   Box,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+//import Selector from "./Selector";
 
-export const Home: React.FC = () => {
+export const LatestNews: React.FC = () => {
   const { error, news, loading } = useNews();
 
   return (
     <>
       <Container sx={{ padding: { xs: '2rem', md: '2rem' } }}>
         <Box>
-          <Typography variant="subtitle1" sx={{ fontWeight: "600" }}>
-            Filter by keywords
-          </Typography>
+          {/*<Selector>*/}
 
-          <TextField
-            type="search"
-            placeholder="I'm searching for..."
-            variant="outlined"
-            sx={{
-              my: "1rem",
-              maxWidth: "30rem",
-            }}
-            fullWidth
-            size="small"
-          />
+          {/*</Selector>*/}
         </Box>
 
         {loading && <Loading />}
         {error && <Error error={error} />}
 
         <Typography variant="subtitle1" sx={{ fontWeight: "600" }}>
-          Results:{" "}
+          Resultados:{" "}
           {news?.length}
         </Typography>
 

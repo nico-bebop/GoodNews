@@ -1,12 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./components/Home";
+import { LatestNews } from "./components/LatestNews";
+import { SearchNews } from "./components/SearchNews";
 import './App.css'
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LatestNews />} />
+        <Route path="/search" element={<SearchNews />} />
       </Routes>
     </>
   );

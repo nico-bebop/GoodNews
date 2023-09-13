@@ -4,7 +4,7 @@ const Loading = () => {
   return (
     <>
       <Typography variant="subtitle1" sx={{ fontStyle: "italic" }}>
-        Loading...
+        Cargando...
       </Typography>
     </>
   );
