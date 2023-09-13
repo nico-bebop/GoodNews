@@ -1,27 +1,15 @@
-import { useEffect, useState } from 'react'
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./components/Home";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-    useEffect(() => {
-        populateNewsData()
-    }, []);
-
-    return (
-    <>    
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
-  )
-}
-
-async function populateNewsData() {
-    const response = await fetch('api/news/top-headlines?country=ar&page=1&pageSize=10');
-    console.log(response);
-    //const data = await response.json();
-    //this.setState({ newsResult: data, loading: false });
+  );
 }
 
 export default App
