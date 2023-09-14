@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import defaultImage from "../assets/defaultImage.png"
 
 export const Article = ({ data }: any & IArticle) => {
   return (
@@ -16,7 +17,7 @@ export const Article = ({ data }: any & IArticle) => {
       <Card sx={{ maxWidth: 500, height: 365, m: "0 auto" }}>
         <CardMedia
           sx={{ height: 140 }}
-          image={data.urlToImage}
+          image={data.urlToImage ? data.urlToImage : defaultImage}
           title={data.title}
           component='img'
         />
@@ -25,7 +26,7 @@ export const Article = ({ data }: any & IArticle) => {
             variant="overline"
             sx={{ display: "flex", alignItems: "center", color: "grey" }}
           >
-            {data.publishedAt && data.publishedAt}
+            {new Date(data.publishedAt).toLocaleDateString("es-ar")}
           </Typography>
 
           <Typography

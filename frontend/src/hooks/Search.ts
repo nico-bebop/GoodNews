@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IArticle } from "../models";
 
 const useNews = () => {
@@ -6,18 +6,14 @@ const useNews = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetchNews();
-  }, []);
-
-  async function fetchNews(/*language : string, date*/) {
+  async function fetchNews(keywords: string) {
     try {
       setError("");
       setLoading(true);
 
       const url = ('api/news/search?' + new URLSearchParams({
         language: 'es',
-        keywords: 'apple',
+        keywords: keywords,
         dateFrom: '2023-09-13',
         dateTo: '2023-09-13',
         page: '1',
@@ -36,7 +32,7 @@ const useNews = () => {
     }
   }
 
-  return { news, loading, error };
+  return { fetchNews, news, loading, error };
 };
 
 export default useNews;

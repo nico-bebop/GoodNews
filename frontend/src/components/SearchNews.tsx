@@ -6,12 +6,14 @@ import {
   TextField,
   Container,
   Box,
-  Typography,
+  Typography
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import React from "react";
 
 export const SearchNews: React.FC = () => {
-  const { error, news, loading } = useNews();
+  const [keywords, setKeywords] = React.useState('');
+  const { fetchNews, error, news, loading } = useNews();
 
   return (
     <>
@@ -23,6 +25,8 @@ export const SearchNews: React.FC = () => {
 
           <TextField
             type="search"
+            onChange={e => setKeywords(e.target.value)}
+            onKeyUp={e => { if (e.key === 'Enter') { fetchNews(keywords) } }}
             placeholder="Escribe palabras clave..."
             variant="outlined"
             sx={{

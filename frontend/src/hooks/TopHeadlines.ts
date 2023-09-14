@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { IArticle } from "../models";
 
-const useNews = () => {
+const useNews = (country: string) => {
   const [news, setNews] = useState<IArticle[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchNews();
-  }, []);
+    fetchNews(country);
+  }, [country]);
 
-  async function fetchNews(/*country : string*/) {
+  async function fetchNews(country: string) {
     try {
       setError("");
       setLoading(true);
 
       const url = ('api/news/top-headlines?' + new URLSearchParams({
-        country: 'us'/*country*/,
+        country: country,
         page: '1',
         pageSize: '10'
       }).toString());

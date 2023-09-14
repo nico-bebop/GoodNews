@@ -1,3 +1,4 @@
+import * as React from 'react';
 import useNews from "../hooks/TopHeadlines";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -8,18 +9,17 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-//import Selector from "./Selector";
+import Selector from "./Selector";
 
 export const LatestNews: React.FC = () => {
-  const { error, news, loading } = useNews();
+  const [country, setCountry] = React.useState('ar');
+  const { error, news, loading } = useNews(country);
 
   return (
     <>
       <Container sx={{ padding: { xs: '2rem', md: '2rem' } }}>
         <Box>
-          {/*<Selector>*/}
-
-          {/*</Selector>*/}
+          <Selector country={country} setCountry={setCountry} />
         </Box>
 
         {loading && <Loading />}
