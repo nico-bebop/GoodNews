@@ -55,7 +55,7 @@ export const Article = ({ data }: any & IArticle) => {
               size="small"
               sx={{ fontWeight: "600" }}
             >
-              Read more
+              Ir a la noticia
             </Button>
           </Link>
         </CardActions>
