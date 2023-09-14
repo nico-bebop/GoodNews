@@ -9,10 +9,15 @@ import {
   Typography
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import React from "react";
+import React, { useState } from 'react'
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs from 'dayjs';
 
 export const SearchNews: React.FC = () => {
-  const [keywords, setKeywords] = React.useState('');
+  const [keywords, setKeywords] = useState('');
+  const [dateFrom, setFrom] = useState<any | null>(dayjs());
+  const [dateTo, setTo] = useState<any | null>(dayjs());
   const { fetchNews, error, news, loading } = useNews();
 
   return (
@@ -26,7 +31,7 @@ export const SearchNews: React.FC = () => {
           <TextField
             type="search"
             onChange={e => setKeywords(e.target.value)}
-            onKeyUp={e => { if (e.key === 'Enter') { fetchNews(keywords) } }}
+            onKeyUp={e => { if (e.key === 'Enter') { fetchNews(keywords, dateFrom, dateTo) } }}
             placeholder="Escribe palabras clave..."
             variant="outlined"
             sx={{
@@ -37,6 +42,11 @@ export const SearchNews: React.FC = () => {
             size="small"
           />
         </Box>
+
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker format="DD/MM/YYYY" defaultValue={dayjs()} onChange={e => setFrom(e)} />
+          <DatePicker format="DD/MM/YYYY" defaultValue={dayjs()} onChange={e => setTo(e)} />
+        </LocalizationProvider>
 
         {loading && <Loading />}
         {error && <Error error={error} />}

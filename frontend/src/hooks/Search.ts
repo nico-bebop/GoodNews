@@ -6,7 +6,7 @@ const useNews = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function fetchNews(keywords: string) {
+  async function fetchNews(keywords: string, from: Date, to: Date) {
     try {
       setError("");
       setLoading(true);
@@ -14,8 +14,8 @@ const useNews = () => {
       const url = ('api/news/search?' + new URLSearchParams({
         language: 'es',
         keywords: keywords,
-        dateFrom: '2023-09-13',
-        dateTo: '2023-09-13',
+        dateFrom: new Date(from).toLocaleDateString('en-US').replace(/\//g, '-'),
+        dateTo: new Date(to).toLocaleDateString('en-US').replace(/\//g, '-'),
         page: '1',
         pageSize: '10'
       }).toString());
