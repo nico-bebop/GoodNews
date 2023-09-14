@@ -14,8 +14,8 @@ Aplicación web que consume noticias de [News API](https://newsapi.org/). Permit
 
 #### Instrucciones
 
-1. Para inicializar la API backend, ir al directorio del proyecto y en la carpeta *webapi* ejecutar el comando `dotnet run`
+1. Para inicializar la API backend, ir al directorio del proyecto y en la carpeta *webapi* ejecutar el comando `dotnet run`.
 
-2. Luego, ir a la carpeta *frontend* y ejecutar en consola el comando `npm run dev`
+2. Luego, ir a la carpeta *frontend* y ejecutar en otra consola los comandos `npm install` y `npm run dev`.
 
 3. Abrir [http://localhost:5173](http://localhost:5173) en el navegador para ver el proyecto.
