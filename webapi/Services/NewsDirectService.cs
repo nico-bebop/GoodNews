@@ -45,7 +45,13 @@ namespace webapi.Services
             client.DefaultRequestHeaders.Add("x-api-key", apiKey);
             client.DefaultRequestHeaders.Add("user-agent", "good-news");
 
-            string parameters = string.Format("?language={0}&q={1}&from={2}&to={3}&page={4}&pageSize={5}", language, keywords, dateFrom, dateTo, page, pageSize);
+            string parameters = string.Format("?language={0}&q={1}&from={2}&to={3}&page={4}&pageSize={5}",
+                language,
+                keywords,
+                dateFrom.ToString("yyyy-MM-dd"),
+                dateTo.ToString("yyyy-MM-dd"),
+                page,
+                pageSize);
             HttpResponseMessage response = client.GetAsync(parameters).Result;
 
             if (response.IsSuccessStatusCode)

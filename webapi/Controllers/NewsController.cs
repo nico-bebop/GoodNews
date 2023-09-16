@@ -6,6 +6,7 @@ namespace webapi.Controllers;
 
 [ApiController]
 [Route("api/news")]
+[ResponseCache(Duration = 120, Location = ResponseCacheLocation.Any)]
 public class NewsController : ControllerBase
 {
     private readonly ILogger<NewsController> _logger;
